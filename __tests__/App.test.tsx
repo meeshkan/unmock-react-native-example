@@ -12,7 +12,8 @@ import {
 } from 'react-native-testing-library';
 
 // Required to turn "fetch" calls into Node.js calls that unmock(-node) can intercept
-global.fetch = require('node-fetch-polyfill');
+// @ts-ignore
+global.fetch = require('node-fetch');
 
 describe('App with jest-fetch-mock', () => {
   beforeAll(() => {

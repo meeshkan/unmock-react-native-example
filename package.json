@@ -17,11 +17,12 @@
     "@babel/core": "^7.6.3",
     "@babel/runtime": "^7.6.3",
     "@react-native-community/eslint-config": "^0.0.5",
+    "@types/jest": "^24.0.18",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
-    "node-fetch-polyfill": "^2.0.6",
+    "node-fetch": "^2.6.0",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",
     "unmock": "^0.3.8"
