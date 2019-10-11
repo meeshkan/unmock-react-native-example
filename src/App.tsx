@@ -1,19 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, View, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import UnmockMitm, {unmockFetch} from 'unmock-fetch';
 
-const fetchJoke = async () => {
-  console.log(`Fetching new joke`);
-  const fetchResult = await fetch(
-    'http://api.icndb.com/jokes/random?limitTo=[nerdy]&exclude=[explicit]',
-  );
+const url =
+  'http://api.icndb.com/jokes/random?limitTo=[nerdy]&exclude=[explicit]';
+
+const fetchJokeInternal = async () => {
+  console.log('Fetching a new joke');
+  const fetchResult = await fetch(url);
   if (!fetchResult.ok) {
     throw Error(`Failed fetching joke with code: ${fetchResult.status}`);
   }
   const body = await fetchResult.json();
+  console.log(`Got response json: ${JSON.stringify(body)}`);
   const joke = body.value.joke;
   console.log(`Got a new joke: ${joke}`);
   return joke;
+};
+
+const fetchJoke = async ({useUnmock = false}: {useUnmock: boolean}) => {
+  try {
+    if (useUnmock) {
+      UnmockMitm.on();
+    }
+    return await fetchJokeInternal();
+  } finally {
+    UnmockMitm.off();
+  }
 };
 
 const App = () => {
@@ -23,7 +37,7 @@ const App = () => {
   const refreshJoke = async () => {
     try {
       setLoading(true);
-      const joke = await fetchJoke();
+      const joke = await fetchJoke({useUnmock: false});
       setJoke(joke);
       setError(null);
       console.log(`Set joke: ${joke}`);
