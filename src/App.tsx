@@ -59,6 +59,7 @@ const App = () => {
           )}
           <View style={styles.buttonContainer}>
             <Button
+              disabled={loading}
               title={'Get me a new one'}
               onPress={refreshJoke}
               color="blue"
