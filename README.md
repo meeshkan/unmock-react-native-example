@@ -4,6 +4,12 @@ Example of using [unmock](https://unmock.io) for testing asynchronous data fetch
 
 This project was created with [react-native](https://facebook.github.io/react-native/docs/getting-started) CLI.
 
+## Cat facts in action
+
+<p align="center">
+<img src="./screenshot.png" alt="drawing" width="200"/>
+</p>
+
 ## Instructions
 
 Install dependencies:
@@ -18,7 +24,7 @@ Run tests:
 yarn test
 ```
 
-To run the app in an Android Virtual Device, [install one](https://developer.android.com/studio/run/managing-avds) from Android Studio and run
+To run the app in an Android Virtual Device (AVD), [install and start the AVD](https://developer.android.com/studio/run/managing-avds) and run
 
 ```bash
 yarn android
