@@ -29,6 +29,15 @@ describe('App with jest-fetch-mock', () => {
   beforeEach(() => {
     unmock.reset();
   });
+  it('renders the fact block when API succeeds', async () => {
+    const api = unmock.services['catFactApi'];
+    api.state(transform.withCodes(200));
+    const renderApi: RenderAPI = render(<App />);
+
+    await waitForElement(() => {
+      return renderApi.getByTestId("fact");
+    });
+  });
   it('renders the fact returned from the API when API succeeds', async () => {
     const api = unmock.services['catFactApi'];
     api.state(transform.withCodes(200));
@@ -43,7 +52,7 @@ describe('App with jest-fetch-mock', () => {
     const api = unmock.services['catFactApi'];
     api.state(transform.withCodes(200));
 
-    const renderApi: RenderAPI = render(<App />);
+    const  renderApi: RenderAPI = render(<App />);
 
     fireEvent.press(renderApi.getByText('Get me a new one'));
 

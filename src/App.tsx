@@ -17,10 +17,10 @@ const fetchFact = async () => {
 };
 
 const App = () => {
-  const [fact, setFact] = useState('');
+  const [shownFact, setFact] = useState('');
   const [err, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const refreshJoke = async () => {
+  const refreshFact = async () => {
     try {
       setLoading(true);
       const fact = await fetchFact();
@@ -36,7 +36,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    refreshJoke();
+    refreshFact();
   }, []);
 
   return (
@@ -49,19 +49,19 @@ const App = () => {
               Loading...
             </Text>
           ) : err ? (
-            <Text style={{...styles.joke, ...styles.error}} testID="error">
+            <Text style={{...styles.fact, ...styles.error}} testID="error">
               Something went horribly wrong, please try again!
             </Text>
           ) : (
-            <Text style={styles.joke} testID="joke">
-              {fact ? fact : 'Loading...'}
+            <Text style={styles.fact} testID="fact">
+              {shownFact}
             </Text>
           )}
           <View style={styles.buttonContainer}>
             <Button
               disabled={loading}
               title={'Get me a new one'}
-              onPress={refreshJoke}
+              onPress={refreshFact}
               color="blue"
             />
           </View>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.black,
   },
-  joke: {
+  fact: {
     padding: 20,
     width: '100%',
     fontSize: 18,
