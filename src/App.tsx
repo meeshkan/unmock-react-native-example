@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, View, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+const CAT_FACT_URL =
+  'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1';
+
 const fetchFact = async () => {
   console.log(`Fetching new cat fact`);
-  const fetchResult = await fetch(
-    'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1',
-  );
+  const fetchResult = await fetch(CAT_FACT_URL);
   if (!fetchResult.ok) {
     throw Error(`Failed fetching cat fact with code: ${fetchResult.status}`);
   }
