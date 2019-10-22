@@ -5,19 +5,17 @@ description: 'TLDR: Use unmock and react-native-testing-library'
 tags: javascript, reactnative, testing
 ---
 
-Testing networking logic in React Native apps can be hard. You don't want to use the production API to run tests, so you need to mock network calls. Mocking also allows you to test not only the happy-land case where everything works smoothly, but also the case where the API breaks horribly.
+Testing networking logic in React Native apps can be hard. You don't want to use the production API to run tests, so you need to mock network calls. Mocking also lets you to test both the happy case where API works as expected as well as the case where the API fails.
 
-There are different ways to mock network calls. One could use dependency injection to inject "fetching service" into the components and replace the service with a mock in tests. Alternatively, one could use [Context](https://reactjs.org/docs/context.html) to wrap components in a fetching service context. Both of these solutions can work, but there should be a simpler way.
+There are different ways to mock network calls. You could use dependency injection to inject "fetching service" into the components. In tests, you would replace the real service with a mock. Or you could use [Context](https://reactjs.org/docs/context.html) to wrap components in a "fetching service" context. Both of these solutions can work, but there should be a simpler way.
 
-In this post, we are going to build a simple React Native application that's tested in end-to-end fashion with mock data served by [unmock](https://www.unmock.io). Unmock is an HTTP test library that uses [node-mitm](https://github.com/moll/node-mitm) behind the scenes to intercept all calls made by your app. At intercept, it either returns fake data adhering to the schema of the API or, in case it encounters an unexpected call, raises an error.
+In this post, we are going to build a basic React Native application tested in end-to-end fashion. We use [Unmock](https://www.unmock.io) to serve mock data to the app. Unmock is an HTTP testing library using [node-mitm](https://github.com/moll/node-mitm) behind the scenes to intercept HTTP traffic. At interception, it generates random data mocking the API or raises an error if not setup.
 
-We'll run our tests in Node.js environment using [Jest](https://jestjs.io/), with [react-native-testing-library](https://github.com/callstack/react-native-testing-library) used to render the app component with all the React hook sugar included.
-
-You can find the repository for this project [here](https://github.com/unmock/unmock-react-native-example). Instructions for running the app are contained in the repository.
+We'll run our tests in Node.js with [Jest](https://jestjs.io). We use [React Native Testing Library](https://github.com/callstack/react-native-testing-library) to render the component and trigger React hooks. You can find the repository for this project [here](https://github.com/unmock/unmock-react-native-example). Repository also includes instructions for running the app.
 
 ## Tour of the app
 
-The [example application](https://github.com/unmock/unmock-react-native-example) shows a random cat fact fetched from the [Cat Facts API](https://alexwohlbruck.github.io/cat-facts/). User can refresh the fact by pressing the button. The app in all its glory looks like this, running here in Android virtual device:
+The example application shows a random cat fact fetched from the [Cat Facts API](https://alexwohlbruck.github.io/cat-facts/). User can refresh the fact by pressing the button. The app in all its glory looks like this, running here in Android virtual device:
 
 <p align="center">
 <img src="./screenshot.png" alt="drawing" width="200"/>
@@ -48,9 +46,9 @@ const App = () => {
 };
 ```
 
-We use `useState` from React hooks for state management. The variables `shownFact`, `err`, and `loading` are used to contain the shown cat fact, possible fetch error, and the loading state.
+We use `useState` from React hooks for managing the state of `shownFact`, `err`, and `loading`. These variables contain the cat fact displayed to the user, possible fetch error, and the loading state.
 
-Refreshing the shown fact at start-up or when user presses the button is made via `refreshFact` function defined in `App`:
+The `refreshFact` function refreshes the cat fact shown to the user:
 
 ```ts
 const refreshFact = async () => {
@@ -67,7 +65,7 @@ const refreshFact = async () => {
 };
 ```
 
-This function sets the component state as appropriate and relies on `fetchFact` function to do the network call. This function uses the [Fetch API](https://facebook.github.io/react-native/docs/network) provided by React Native:
+This function sets the component state and uses `fetchFact` function for the network call. The `fetchFact` function uses [Fetch API](https://facebook.github.io/react-native/docs/network) provided by React Native:
 
 ```ts
 const CAT_FACT_URL =
@@ -84,9 +82,9 @@ const fetchFact = async () => {
 };
 ```
 
-We parse the cat fact by parsing a JSON from the response body and accessing the cat fact in the `text` field, as documented [here](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html).
+We parse the body by first parsing a JSON and extract the cat fact from the `text` property, as documented [here](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html).
 
-Content is rendered based on the values of `loading` and `err`:
+Application component renders content based on the values of `loading` and `err:
 
 ```jsx
 {
@@ -106,7 +104,7 @@ Content is rendered based on the values of `loading` and `err`:
 }
 ```
 
-If the state of `loading` is `true`, we show the text "Loading...". If the state of `err` contains an error, apology is shown to the user. Otherwise, the cat fact is rendered.
+If the state of `loading` is `true`, we show the text "Loading...". If the state of `err` contains an error, user will see an apology. Otherwise, app shows the cat fact.
 
 Note that we also give the components [testID](https://facebook.github.io/react-native/docs/view#testid) properties to simplify testing.
 
