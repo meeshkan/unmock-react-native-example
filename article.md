@@ -112,16 +112,14 @@ Note that we also give the components [testID](https://facebook.github.io/react-
 
 ### Prerequisites
 
-Tests for the application are found in [App.test.tsx](https://github.com/unmock/unmock-react-native-example/blob/master/__tests__/App.test.tsx).
-
-The first step in the tests is to fill in `fetch` (not natively available in Node.js) with [node-fetch](https://www.npmjs.com/package/node-fetch):
+File [App.test.tsx](https://github.com/unmock/unmock-react-native-example/blob/master/__tests__/App.test.tsx) contains the tests. The first step in the tests is to fill in `fetch` (not available in Node.js) with [node-fetch](https://www.npmjs.com/package/node-fetch):
 
 ```ts
 // @ts-ignore
 global.fetch = require('node-fetch');
 ```
 
-In the `beforeAll` block, we switch on Unmock to intercept all outgoing traffic and define the API behaviour with the [nock](https://www.unmock.io/docs/unmock)-like syntax:
+In the `beforeAll` block, we switch on Unmock with `unmock.on()`. Then we add rules for intercepting all outgoing traffic for the Cat Facts API URL:
 
 ```ts
 beforeAll(() => {
@@ -134,11 +132,11 @@ beforeAll(() => {
 });
 ```
 
-In `unmock.nock` call, we set the URL for the mocked service as well as give the name `catFactApi` for the created fake service. Below, we use the `catFactApi` to control the "state" of the service
+In `unmock.nock` call, we also a give the name `catFactApi` for the created fake service. Later in tests, we use the `catFactApi` name to change the behaviour of the service.
 
-After specifying the mock API URL, we then specify the mocked operation: for a `GET` request to the given URL, the API should either return a `200` response with a JSON body or throw an internal server error. The syntax `{ text: u.string('lorem.sentence') }` means that the response body should be a JSON object with `text` property. The value for the property should be a random string generated with `lorem.sentence` API from [faker.js](https://github.com/marak/Faker.js/). Notice how we don't need to hardcode "foo" or "bar" in our tests!
+In the behaviour for status code 200, we specify that the API should return a JSON body with `text` property. The syntax `u.string('lorem.sentence')` means that the value should be a fake sentence. See [faker.js](https://github.com/marak/Faker.js/) for other kinds of fake values you can use. Notice how we don't need to hardcode "foo" or "bar" in our tests!
 
-Finally, we reset the state of `unmock` before each test so that the tests remain independent:
+Before each test, we reset the state of `unmock` so that the tests remain decoupled:
 
 ```ts
 beforeEach(() => {
@@ -148,7 +146,7 @@ beforeEach(() => {
 
 ### Test for success
 
-The first test ensures that when the API successfully returns a cat fact, the fact block is displayed to the user:
+The first test ensures that when the API returns a cat fact, the app contains the correct element:
 
 ```ts
 it('renders the fact block when API succeeds', async () => {
@@ -162,9 +160,9 @@ it('renders the fact block when API succeeds', async () => {
 });
 ```
 
-First we set the API to always return 200, simulating success. We then use `render` from `react-native-testing-library` to fully render the component and run all hooks. We then use `waitForElement` from the same library to wait for the element with `testID="fact"` to show up.
+Here we first set the API to always return 200, simulating success. We then use `render` from `library` to render the component and run all hooks. We use `waitForElement` to wait for the element with `testID="fact"` to show up.
 
-Second test for success ensures that when user clicks the button, new fact is fetched from API. The button press is simulated with the `fireEvent` from `react-native-testing-library`:
+Second test for success ensures that when user clicks the button, the app fetches a new fact from the API. We simulate button press with the `fireEvent` from `react-native-testing-library`:
 
 ```ts
 it('renders new fact after clicking the button', async () => {
@@ -183,13 +181,11 @@ it('renders new fact after clicking the button', async () => {
 });
 ```
 
-Here we again use `waitForElement`, but instead of relying on an element with `testID="fact"` to show up, we wait for an element that contains the same text as the (random) fact returned from the API.
-
-Because we're returning a random string from the API (via `lorem.sentence`), we need here to access the random value returned from the service. Unmock services keep track of their calls and return values in the `spy` property, which is a [SinonJS spy](https://sinonjs.org/releases/latest/spies/). The second spy call is accessed via the `secondCall` property and its return value via `returnValue`.
+Here we again use `waitForElement` like above. This time we wait for an element containing the same text as the random fact returned from the API. Because the API returns a random sentence, we need to find its value. Unmock services keep track of mocked calls in the `spy` property. This property is a [SinonJS spy](https://sinonjs.org/releases/latest/spies/). The spy exposes its second call via the `secondCall` property. The return value of that call is in `returnValue`. See the [chapter on expectations](https://www.unmock.io/docs/expectations) in Unmock documentation for more information.
 
 ### Test for failure
 
-Test for failure proceeds similarly as the test for success: we change the API to return status code 500, render the app, and wait for the element with `testID="error"` to show up.
+Test for failure proceeds as the test for success. we change the API to return status code 500, render the app, and wait for the element with `testID="error"` to show up.
 
 ```ts
 it('renders error when the API fails', async () => {
@@ -206,8 +202,8 @@ it('renders error when the API fails', async () => {
 
 ### Conclusion
 
-That's it! Using Unmock, Jest and `react-native-testing-library`, we wrote comprehensive integration tests for our application component. The tests running in Node.js made sure that React hooks are properly triggered and that the returned data is rendered as expected, both in the case when the API call succeeds and when it fails. We did not need to inject extra dependencies into our component nor hack with React context.
+That's it! Using Unmock, Jest and React Native Testing Library, we wrote comprehensive integration tests for our component. The tests made sure that the app triggers data fetching via React hooks. We also ensured that the app displays the returned cat fact without hardcoding "foo" or "bar". We also tested the case when the API call fails. We did not need to inject extra dependencies into our component or use contexts to mock the API.
 
-Note that `unmock` currently only supports Node.js environment. If you would like to see Unmock run in React Native and populate your app with fake data, maybe create an issue in [unmock-js](https://github.com/unmock/unmock-js) repository 😊
+Note that `unmock` currently only supports Node.js environment. If you would like to see Unmock populate your React Native app with fake data, create an issue in [unmock-js](https://github.com/unmock/unmock-js) repository.
 
 Thanks a lot for reading, as always we appreciate any feedback and comments!
