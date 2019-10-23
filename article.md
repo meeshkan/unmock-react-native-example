@@ -9,7 +9,7 @@ Testing networking logic in React Native apps can be hard. You don't want to use
 
 There are different ways to mock network calls. You could use dependency injection to inject "fetching service" into the components. In tests, you would replace the real service with a mock. Or you could use [Context](https://reactjs.org/docs/context.html) to wrap components in a "fetching service" context. Both of these solutions can work, but there should be a simpler way.
 
-In this post, we are going to build a basic React Native application tested in end-to-end fashion. We use [Unmock](https://www.unmock.io) to serve mock data to the app. Unmock is an HTTP testing library using [node-mitm](https://github.com/moll/node-mitm) behind the scenes to intercept HTTP traffic. At interception, it generates random data mocking the API or raises an error if not setup.
+In this post, we are going to build a basic React Native application tested in end-to-end fashion. We use [Unmock](https://www.unmock.io) to serve mock data to the app. Unmock is an HTTP testing library using [node-mitm](https://github.com/moll/node-mitm) behind the scenes to intercept HTTP traffic. At interception, it generates random data mocking the API.
 
 We'll run our tests in Node.js with [Jest](https://jestjs.io). We use [React Native Testing Library](https://github.com/callstack/react-native-testing-library) to render the component and trigger React hooks. You can find the repository for this project [here](https://github.com/unmock/unmock-react-native-example). Repository also includes instructions for running the app.
 
@@ -82,7 +82,7 @@ const fetchFact = async () => {
 };
 ```
 
-We parse the body by first parsing a JSON and extract the cat fact from the `text` property, as documented [here](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html).
+We parse the body by first parsing a JSON and extract the cat fact from the `text` property as documented [here](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html).
 
 Application component renders content based on the values of `loading` and `err:
 
@@ -200,7 +200,7 @@ it('renders error when the API fails', async () => {
 });
 ```
 
-### Conclusion
+## Conclusion
 
 That's it! Using Unmock, Jest and React Native Testing Library, we wrote comprehensive integration tests for our component. The tests made sure that the app triggers data fetching via React hooks. We also ensured that the app displays the returned cat fact without hardcoding "foo" or "bar". We also tested the case when the API call fails. We did not need to inject extra dependencies into our component or use contexts to mock the API.
 
