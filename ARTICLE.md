@@ -84,7 +84,7 @@ const fetchFact = async () => {
 
 We parse the body by first parsing a JSON and extract the cat fact from the `text` property as documented [here](https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html).
 
-Application component renders content based on the values of `loading` and `err:
+Application component renders content based on the values of `loading` and `err`:
 
 ```jsx
 {
