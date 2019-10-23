@@ -5,7 +5,7 @@ description: 'TLDR: Use unmock and react-native-testing-library'
 tags: javascript, reactnative, testing
 ---
 
-Testing networking logic in React Native apps can be hard. You don't want to use the production API to run tests, so you need to mock network calls. Mocking also lets you to test both the happy case where API works as expected as well as the case where the API fails.
+Testing networking logic in React Native apps can be hard. You don't want to use the production API to run tests, so you need to mock network calls. Mocking also lets you test both the happy case where API works as expected as well as the case where the API fails.
 
 There are different ways to mock network calls. You could use dependency injection to inject "fetching service" into the components. In tests, you would replace the real service with a mock. Or you could use [Context](https://reactjs.org/docs/context.html) to wrap components in a "fetching service" context. Both of these solutions can work, but there should be a simpler way.
 
