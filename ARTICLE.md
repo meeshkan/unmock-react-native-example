@@ -13,9 +13,9 @@ In this post, we are going to build a basic React Native application tested in e
 
 We'll run our tests in Node.js with [Jest](https://jestjs.io). We use [React Native Testing Library](https://github.com/callstack/react-native-testing-library) to render the component and trigger React hooks. You can find the repository for this project [here](https://github.com/unmock/unmock-react-native-example). Repository also includes instructions for running the app.
 
-## Tour of the app
+## Tour of the sample application
 
-The example application shows a random cat fact fetched from the [Cat Facts API](https://alexwohlbruck.github.io/cat-facts/). User can refresh the fact by pressing the button. The app in all its glory looks like this, running here in Android virtual device:
+The sample application shows a random cat fact fetched from the [Cat Facts API](https://alexwohlbruck.github.io/cat-facts/). User can refresh the fact by pressing the button. The app in all its glory looks like this, running here in Android virtual device:
 
 <p align="center">
 <img src="./screenshot.png" alt="drawing" width="200"/>
