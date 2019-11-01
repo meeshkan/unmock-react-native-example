@@ -17,7 +17,7 @@ global.fetch = require('node-fetch');
 
 // https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1
 
-describe('App with jest-fetch-mock', () => {
+describe('App', () => {
   beforeAll(() => {
     unmock.on();
     unmock
@@ -35,7 +35,7 @@ describe('App with jest-fetch-mock', () => {
     const renderApi: RenderAPI = render(<App />);
 
     await waitForElement(() => {
-      return renderApi.getByTestId("fact");
+      return renderApi.getByTestId('fact');
     });
   });
   it('renders the fact returned from the API when API succeeds', async () => {
@@ -52,7 +52,7 @@ describe('App with jest-fetch-mock', () => {
     const api = unmock.services['catFactApi'];
     api.state(transform.withCodes(200));
 
-    const  renderApi: RenderAPI = render(<App />);
+    const renderApi: RenderAPI = render(<App />);
 
     fireEvent.press(renderApi.getByText('Get me a new one'));
 
