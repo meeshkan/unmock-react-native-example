@@ -1,17 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, View, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import unmock from 'unmock-react-native';
+import unmock, {u} from 'unmock';
 
 const useUnmock = true;
 
 const CAT_FACT_URL =
   'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1';
 
+const unmockOn = () => {
+  unmock.on();
+  unmock
+    .nock('https://cat-fact.herokuapp.com', 'catFactApi')
+    .get('/facts/random?animal_type=cat&amount=1')
+    .reply(200, {text: u.string('lorem.sentence')})
+    .reply(500, 'Internal server error');
+  return unmock;
+};
+
 const fetchFact = async () => {
   console.log(`Fetching new cat fact`);
   if (useUnmock) {
     unmock.on();
+    unmock
+      .nock('https://cat-fact.herokuapp.com')
+      .get('/facts/random?animal_type=cat&amount=1')
+      .reply(200, {text: 'Fake fact from unmock'});
     console.log(`Unmock on`);
   }
   try {

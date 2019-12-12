@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "unmock-react-native": "file:../unmock-js/packages/unmock-react-native"
+    "unmock": "file:../unmock-js/packages/unmock"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
