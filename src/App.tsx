@@ -4,16 +4,12 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import unmock, {u} from 'unmock';
 import {buildFetch} from 'unmock-fetch';
 
-if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer;
-
-const useUnmock = true;
-
 const faker = unmock.newFaker();
 
 faker
   .nock('https://cat-fact.herokuapp.com')
   .get('/facts/random?animal_type=cat&amount=1')
-  .reply(200, {text: 'Fake fact from unmock'})
+  .reply(200, {text: u.string('lorem.sentence')})
   .reply(500, 'Internal server error');
 
 const fetch = buildFetch(faker.createResponse.bind(faker));
@@ -21,26 +17,7 @@ const fetch = buildFetch(faker.createResponse.bind(faker));
 const CAT_FACT_URL =
   'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1';
 
-const unmockOn = () => {
-  unmock.on();
-  unmock
-    .nock('https://cat-fact.herokuapp.com', 'catFactApi')
-    .get('/facts/random?animal_type=cat&amount=1')
-    .reply(200, {text: u.string('lorem.sentence')})
-    .reply(500, 'Internal server error');
-  return unmock;
-};
-
 const fetchFact = async () => {
-  // console.log(`Fetching new cat fact`);
-  /* if (useUnmock) {
-    unmock.on();
-    unmock
-      .nock('https://cat-fact.herokuapp.com')
-      .get('/facts/random?animal_type=cat&amount=1')
-      .reply(200, {text: 'Fake fact from unmock'});
-    // console.log(`Unmock on`);
-  } */
   try {
     const fetchResult = await fetch(CAT_FACT_URL);
     if (!fetchResult.ok) {
