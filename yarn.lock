@@ -5727,11 +5727,6 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
-punycode@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
-  integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
-
 punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
@@ -5755,11 +5750,6 @@ query-string@^6.8.3:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
-
-querystring@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-  integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
   version "2.1.1"
@@ -7056,8 +7046,8 @@ universalify@^0.1.0:
 "unmock-browser@file:../unmock-js/packages/unmock-browser":
   version "0.3.8"
   dependencies:
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-e1348f2d-7d68-4838-b13a-a86e74598369-1576483377129/node_modules/unmock-core"
-    unmock-fetch "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-e1348f2d-7d68-4838-b13a-a86e74598369-1576483377129/node_modules/unmock-fetch"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-8e4b0edd-1b2d-4213-8598-2ddb16217993-1576484572075/node_modules/unmock-core"
+    unmock-fetch "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-8e4b0edd-1b2d-4213-8598-2ddb16217993-1576484572075/node_modules/unmock-fetch"
 
 "unmock-cli@file:../unmock-js/packages/unmock-cli":
   version "0.3.10"
@@ -7067,8 +7057,8 @@ universalify@^0.1.0:
     commander "^2.20.0"
     glob "^7.1.3"
     readline-sync "^1.4.10"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-7f6e61ab-021d-4191-aa51-fe3008197d6c-1576483377130/node_modules/unmock-core"
-    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-7f6e61ab-021d-4191-aa51-fe3008197d6c-1576483377130/node_modules/unmock-node"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-198a8238-7296-4008-ba04-43eaae13e13a-1576484572073/node_modules/unmock-core"
+    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-198a8238-7296-4008-ba04-43eaae13e13a-1576484572073/node_modules/unmock-node"
 
 "unmock-core@file:../unmock-js/packages/unmock-core":
   version "0.3.10"
@@ -7094,7 +7084,7 @@ universalify@^0.1.0:
     lodash "^4.17.14"
     minimatch "^3.0.4"
     monocle-ts "^2.0.0"
-    openapi-refinements "file:../../../Library/Caches/Yarn/v4/npm-unmock-core-0.3.10-39690c4f-ebce-491e-9a27-172c80e16dbb-1576483377144/node_modules/openapi-refinements"
+    openapi-refinements "file:../../../Library/Caches/Yarn/v4/npm-unmock-core-0.3.10-8176f220-92e3-418f-bffd-3592c6236149-1576484572076/node_modules/openapi-refinements"
     query-string "^6.8.3"
     seedrandom "^3.0.3"
     sinon "^7.4.1"
@@ -7109,7 +7099,7 @@ universalify@^0.1.0:
     "@types/url-parse" "^1.4.3"
     cross-fetch "^3.0.4"
     debug "^4.1.1"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-fetch-0.3.10-8f40124c-5b35-484c-87d7-947ee24414e3-1576483377173/node_modules/unmock-core"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-fetch-0.3.10-38ffe2b2-9a19-4f1a-bc03-0e7d35781fab-1576484572109/node_modules/unmock-core"
     url-parse "^1.4.7"
 
 "unmock-node@file:../unmock-js/packages/unmock-node":
@@ -7126,17 +7116,17 @@ universalify@^0.1.0:
     node-fetch "^2.6.0"
     readable-stream "^3.4.0"
     shimmer "^1.2.1"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-node-0.3.10-f92d11a8-f054-459b-89ae-c366c4781872-1576483377132/node_modules/unmock-core"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-node-0.3.10-3b5c27b8-1e86-4d11-ba4a-57468cc73f84-1576484572060/node_modules/unmock-core"
     uuid "^3.3.2"
     winston "^3.2.1"
 
 "unmock@file:../unmock-js/packages/unmock":
   version "0.3.10"
   dependencies:
-    unmock-browser "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-88a8c1e3-d965-439d-87af-3f8b7b7fc456-1576483377124/node_modules/unmock-browser"
-    unmock-cli "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-88a8c1e3-d965-439d-87af-3f8b7b7fc456-1576483377124/node_modules/unmock-cli"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-88a8c1e3-d965-439d-87af-3f8b7b7fc456-1576483377124/node_modules/unmock-core"
-    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-88a8c1e3-d965-439d-87af-3f8b7b7fc456-1576483377124/node_modules/unmock-node"
+    unmock-browser "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-b42cc04d-e31b-4e02-abb4-b844cf00d3ad-1576484572056/node_modules/unmock-browser"
+    unmock-cli "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-b42cc04d-e31b-4e02-abb4-b844cf00d3ad-1576484572056/node_modules/unmock-cli"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-b42cc04d-e31b-4e02-abb4-b844cf00d3ad-1576484572056/node_modules/unmock-core"
+    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-b42cc04d-e31b-4e02-abb4-b844cf00d3ad-1576484572056/node_modules/unmock-node"
 
 unpipe@~1.0.0:
   version "1.0.0"
@@ -7170,14 +7160,6 @@ url-parse@^1.4.7:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
-
-url@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
-  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
-  dependencies:
-    punycode "1.3.2"
-    querystring "0.2.0"
 
 use@^3.1.0:
   version "3.1.1"

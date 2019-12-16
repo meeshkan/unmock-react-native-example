@@ -13,8 +13,7 @@
     "buffer": "^5.4.3",
     "react": "16.9.0",
     "react-native": "0.61.2",
-    "unmock": "file:../unmock-js/packages/unmock",
-    "url": "^0.11.0"
+    "unmock": "file:../unmock-js/packages/unmock"
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
