@@ -835,6 +835,25 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
+"@meeshkanml/json-schema-faker@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@meeshkanml/json-schema-faker/-/json-schema-faker-0.0.0.tgz#98b71f779470c84779b35ab2bc50384799e79dfb"
+  integrity sha512-Jr1tV632neWm88/Axi8W3onhhWdhD40N1cbL2LZq6UnnhKOtkT6to78/pWscI244nYMsb+ka9DrwWKoqWes3BA==
+  dependencies:
+    "@meeshkanml/json-schema-ref-parser" "0.0.0"
+    jsonpath-plus "^1.0.0"
+    randexp "^0.5.3"
+
+"@meeshkanml/json-schema-ref-parser@0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@meeshkanml/json-schema-ref-parser/-/json-schema-ref-parser-0.0.0.tgz#8f61abb7a191674285bc516096bf3aca6c0c8403"
+  integrity sha512-NI+0dbUzllLPHVS5rbF9e7qUp9pbkbHn5uMAHmBy43CvGD5EfkTQTRjBB2wE5lSv5eLXICVNC4sZGPU9vLTt5g==
+  dependencies:
+    call-me-maybe "^1.0.1"
+    js-yaml "^3.13.1"
+    ono "^5.1.0"
+    url "^0.11.0"
+
 "@meeshkanml/jsonschema@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@meeshkanml/jsonschema/-/jsonschema-0.0.1.tgz#989ff388c54785708701001e1be43bcfe7bd5e8f"
@@ -3022,11 +3041,6 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-format-util@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/format-util/-/format-util-1.0.3.tgz#032dca4a116262a12c43f4c3ec8566416c5b2d95"
-  integrity sha1-Ay3KShFiYqEsQ/TD7IVmQWxbLZU=
-
 fp-ts@^1.0.0:
   version "1.19.5"
   resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.19.5.tgz#3da865e585dfa1fdfd51785417357ac50afc520a"
@@ -4114,7 +4128,7 @@ jetifier@^1.6.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-js-yaml@^3.12.1, js-yaml@^3.13.1:
+js-yaml@^3.13.1:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
@@ -4200,15 +4214,6 @@ json-schema-deref-sync@^0.10.1:
     traverse "~0.6.6"
     valid-url "~1.0.9"
 
-json-schema-faker@^0.5.0-rc17:
-  version "0.5.0-rc23"
-  resolved "https://registry.yarnpkg.com/json-schema-faker/-/json-schema-faker-0.5.0-rc23.tgz#f6cfab390e429b1f57ac83199480439db60962fa"
-  integrity sha512-lRzFEnp55TihRzMvUBrtvTlM/aHGhCwfes0/T9bN9OiB2n36/SUFxtMn7anYoES+f95eU3viJ/foXKosCwsiJw==
-  dependencies:
-    json-schema-ref-parser "^6.1.0"
-    jsonpath-plus "^1.0.0"
-    randexp "^0.5.3"
-
 json-schema-poet@0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/json-schema-poet/-/json-schema-poet-0.0.9.tgz#086d0612edd95e8657edc54f27699f04b0e5ef37"
@@ -4217,15 +4222,6 @@ json-schema-poet@0.0.9:
     fp-ts "^2.0.5"
     io-ts "^2.0.1"
     json-schema-strictly-typed "^0.0.14"
-
-json-schema-ref-parser@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/json-schema-ref-parser/-/json-schema-ref-parser-6.1.0.tgz#30af34aeab5bee0431da805dac0eb21b574bf63d"
-  integrity sha512-pXe9H1m6IgIpXmE5JSb8epilNTGsmTb2iPohAXpOdhqGFbQjNeHHsZxU+C8w6T81GZxSPFLeUoqDJmzxx5IGuw==
-  dependencies:
-    call-me-maybe "^1.0.1"
-    js-yaml "^3.12.1"
-    ono "^4.0.11"
 
 json-schema-strictly-typed@0.0.14, json-schema-strictly-typed@^0.0.14:
   version "0.0.14"
@@ -5341,12 +5337,10 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-ono@^4.0.11:
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/ono/-/ono-4.0.11.tgz#c7f4209b3e396e8a44ef43b9cedc7f5d791d221d"
-  integrity sha512-jQ31cORBFE6td25deYeD80wxKBMj+zBmHTrVxnc6CKhx8gho6ipmWM5zj/oeoqioZ99yqBls9Z/9Nss7J26G2g==
-  dependencies:
-    format-util "^1.0.3"
+ono@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ono/-/ono-5.1.0.tgz#8cafa7e56afa2211ad63dd2eb798427e64f1a070"
+  integrity sha512-GgqRIUWErLX4l9Up0khRtbrlH8Fyj59A0nKv8V6pWEto38aUgnOGOOF7UmgFFLzFnDSc8REzaTXOc0hqEe7yIw==
 
 open@^6.2.0:
   version "6.4.0"
@@ -5727,6 +5721,11 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
+punycode@1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
+  integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
+
 punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
@@ -5750,6 +5749,11 @@ query-string@^6.8.3:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
+
+querystring@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+  integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 querystringify@^2.1.1:
   version "2.1.1"
@@ -7047,8 +7051,8 @@ universalify@^0.1.0:
   version "0.3.8"
   dependencies:
     buffer "^5.4.3"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-06532075-607e-44f2-adff-5a3ae1c516de-1576495217213/node_modules/unmock-core"
-    unmock-fetch "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-06532075-607e-44f2-adff-5a3ae1c516de-1576495217213/node_modules/unmock-fetch"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-4b51eb75-3a39-43a5-a0c5-b95add3e1546-1576567727104/node_modules/unmock-core"
+    unmock-fetch "file:../../../Library/Caches/Yarn/v4/npm-unmock-browser-0.3.8-4b51eb75-3a39-43a5-a0c5-b95add3e1546-1576567727104/node_modules/unmock-fetch"
 
 "unmock-cli@file:../unmock-js/packages/unmock-cli":
   version "0.3.10"
@@ -7058,12 +7062,13 @@ universalify@^0.1.0:
     commander "^2.20.0"
     glob "^7.1.3"
     readline-sync "^1.4.10"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-a75a837d-ba86-4c2f-a5e6-a31538968c9f-1576495217173/node_modules/unmock-core"
-    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-a75a837d-ba86-4c2f-a5e6-a31538968c9f-1576495217173/node_modules/unmock-node"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-a389e0bc-0c12-4977-9c11-0a62add12029-1576567727105/node_modules/unmock-core"
+    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-cli-0.3.10-a389e0bc-0c12-4977-9c11-0a62add12029-1576567727105/node_modules/unmock-node"
 
 "unmock-core@file:../unmock-js/packages/unmock-core":
   version "0.3.10"
   dependencies:
+    "@meeshkanml/json-schema-faker" "^0.0.0"
     "@meeshkanml/jsonschema" "^0.0.1"
     "@types/sinon" "^7.0.13"
     "@types/whatwg-url" "^6.4.0"
@@ -7078,14 +7083,13 @@ universalify@^0.1.0:
     io-ts "^2.0.1"
     json-pointer "^0.6.0"
     json-schema-deref-sync "^0.10.1"
-    json-schema-faker "^0.5.0-rc17"
     json-schema-poet "0.0.9"
     json-schema-strictly-typed "0.0.14"
     loas3 "^0.1.4"
     lodash "^4.17.14"
     minimatch "^3.0.4"
     monocle-ts "^2.0.0"
-    openapi-refinements "file:../../../Library/Caches/Yarn/v4/npm-unmock-core-0.3.10-6150f9b5-d4c9-4694-973b-822dd49ef8e9-1576495217188/node_modules/openapi-refinements"
+    openapi-refinements "file:../../../Library/Caches/Yarn/v4/npm-unmock-core-0.3.10-03d578d5-8d3a-4522-89cd-d64fcbcae442-1576567727107/node_modules/openapi-refinements"
     query-string "^6.8.3"
     seedrandom "^3.0.3"
     sinon "^7.4.1"
@@ -7100,7 +7104,7 @@ universalify@^0.1.0:
     "@types/url-parse" "^1.4.3"
     cross-fetch "^3.0.4"
     debug "^4.1.1"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-fetch-0.3.10-a627f727-7744-4b72-894c-50c8d86a440d-1576495217218/node_modules/unmock-core"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-fetch-0.3.10-d2fbe2a6-9ee7-48f8-b967-99980d991e10-1576567727189/node_modules/unmock-core"
     url-parse "^1.4.7"
 
 "unmock-node@file:../unmock-js/packages/unmock-node":
@@ -7117,17 +7121,17 @@ universalify@^0.1.0:
     node-fetch "^2.6.0"
     readable-stream "^3.4.0"
     shimmer "^1.2.1"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-node-0.3.10-da5e48b0-c12e-40f7-b81f-61b59dd83894-1576495217175/node_modules/unmock-core"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-node-0.3.10-f79407ab-3242-455c-870c-6eeaf4038c25-1576567727092/node_modules/unmock-core"
     uuid "^3.3.2"
     winston "^3.2.1"
 
 "unmock@file:../unmock-js/packages/unmock":
   version "0.3.10"
   dependencies:
-    unmock-browser "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-fdafe0fe-cfce-464a-b06a-3391f68efc02-1576495217169/node_modules/unmock-browser"
-    unmock-cli "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-fdafe0fe-cfce-464a-b06a-3391f68efc02-1576495217169/node_modules/unmock-cli"
-    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-fdafe0fe-cfce-464a-b06a-3391f68efc02-1576495217169/node_modules/unmock-core"
-    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-fdafe0fe-cfce-464a-b06a-3391f68efc02-1576495217169/node_modules/unmock-node"
+    unmock-browser "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-ed90b6de-13bb-414e-a841-cdff9ec31026-1576567727088/node_modules/unmock-browser"
+    unmock-cli "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-ed90b6de-13bb-414e-a841-cdff9ec31026-1576567727088/node_modules/unmock-cli"
+    unmock-core "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-ed90b6de-13bb-414e-a841-cdff9ec31026-1576567727088/node_modules/unmock-core"
+    unmock-node "file:../../../Library/Caches/Yarn/v4/npm-unmock-0.3.10-ed90b6de-13bb-414e-a841-cdff9ec31026-1576567727088/node_modules/unmock-node"
 
 unpipe@~1.0.0:
   version "1.0.0"
@@ -7161,6 +7165,14 @@ url-parse@^1.4.7:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+url@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
+  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
+  dependencies:
+    punycode "1.3.2"
+    querystring "0.2.0"
 
 use@^3.1.0:
   version "3.1.1"

@@ -44,7 +44,7 @@ const App = () => {
       setError(null);
       console.log(`Set fact: ${fact}`);
     } catch (err) {
-      // console.error(`Failed fetching fact: ${err.message}`);
+      console.log(`Failed fetching fact: ${err.message}`);
       setError(err);
     } finally {
       setLoading(false);
