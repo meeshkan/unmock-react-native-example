@@ -2,25 +2,29 @@ import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, View, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import unmock from 'unmock-browser';
-import { u } from "unmock";
-// import {buildFetch} from 'unmock-fetch';
+import {u} from 'unmock';
 
-unmock.on();
+const useUnmock = process.env.NODE_ENV === 'development';
 
-// const faker = unmock.newFaker();
+export const CAT_FACT_API_URL = 'https://cat-fact.herokuapp.com';
+export const CAT_FACT_PATH = '/facts/random?animal_type=cat&amount=1';
 
-unmock
-  .nock('https://cat-fact.herokuapp.com')
-  .get('/facts/random?animal_type=cat&amount=1')
-  .reply(200, {text: u.string('lorem.sentence')})
-  .reply(500, 'Internal server error');
+const unmockOn = () => {
+  unmock.on();
 
-// const fetch = buildFetch(faker.createResponse.bind(faker));
+  unmock
+    .nock(CAT_FACT_API_URL)
+    .get(CAT_FACT_PATH)
+    .reply(200, {text: u.string('lorem.sentence')})
+    .reply(500, 'Internal server error');
+};
 
-const CAT_FACT_URL =
-  'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1';
+if (useUnmock) {
+  unmockOn();
+}
 
 const fetchFact = async () => {
+  const CAT_FACT_URL = `${CAT_FACT_API_URL}${CAT_FACT_PATH}`;
   const fetchResult = await fetch(CAT_FACT_URL);
   if (!fetchResult.ok) {
     throw Error(`Failed fetching cat fact with code: ${fetchResult.status}`);
