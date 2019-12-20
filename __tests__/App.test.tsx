@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import App, {CAT_FACT_PATH, CAT_FACT_API_URL} from '../src/App';
+import App, {CAT_FACT_PATH, CAT_FACT_API_URL, unmockOn} from '../src/App';
 
 import unmock, {transform, u} from 'unmock';
 
@@ -17,12 +17,7 @@ global.fetch = require('node-fetch');
 
 describe('App', () => {
   beforeAll(() => {
-    unmock.on();
-    unmock
-      .nock(CAT_FACT_API_URL, 'catFactApi')
-      .get(CAT_FACT_PATH)
-      .reply(200, {text: u.string('lorem.sentence')})
-      .reply(500, 'Internal server error');
+    unmockOn(unmock);
   });
   beforeEach(() => {
     unmock.reset();

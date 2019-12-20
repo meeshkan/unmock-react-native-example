@@ -2,25 +2,25 @@ import React, {useState, useEffect} from 'react';
 import {Button, StyleSheet, View, Text} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import unmock from 'unmock-browser';
-import {u} from 'unmock';
+import {u, UnmockPackage} from 'unmock';
 
 const useUnmock = process.env.NODE_ENV === 'development';
 
 export const CAT_FACT_API_URL = 'https://cat-fact.herokuapp.com';
 export const CAT_FACT_PATH = '/facts/random?animal_type=cat&amount=1';
 
-const unmockOn = () => {
+export const unmockOn = (unmock: UnmockPackage) => {
   unmock.on();
 
   unmock
-    .nock(CAT_FACT_API_URL)
+    .nock(CAT_FACT_API_URL, 'catFactApi')
     .get(CAT_FACT_PATH)
     .reply(200, {text: u.string('lorem.sentence')})
     .reply(500, 'Internal server error');
 };
 
 if (useUnmock) {
-  unmockOn();
+  unmockOn(unmock);
 }
 
 const fetchFact = async () => {
