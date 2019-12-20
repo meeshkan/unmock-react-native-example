@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import App, {CAT_FACT_PATH, CAT_FACT_API_URL, unmockOn} from '../src/App';
+import App, {mockCatFactAPI} from '../src/App';
 
 import unmock, {transform, u} from 'unmock';
 
@@ -17,7 +17,7 @@ global.fetch = require('node-fetch');
 
 describe('App', () => {
   beforeAll(() => {
-    unmockOn(unmock);
+    mockCatFactAPI(unmock);
   });
   beforeEach(() => {
     unmock.reset();

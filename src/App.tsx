@@ -9,7 +9,7 @@ const useUnmock = process.env.NODE_ENV === 'development';
 export const CAT_FACT_API_URL = 'https://cat-fact.herokuapp.com';
 export const CAT_FACT_PATH = '/facts/random?animal_type=cat&amount=1';
 
-export const unmockOn = (unmock: UnmockPackage) => {
+export const mockCatFactAPI = (unmock: UnmockPackage) => {
   unmock.on();
 
   unmock
@@ -20,7 +20,7 @@ export const unmockOn = (unmock: UnmockPackage) => {
 };
 
 if (useUnmock) {
-  unmockOn(unmock);
+  mockCatFactAPI(unmock);
 }
 
 const fetchFact = async () => {
