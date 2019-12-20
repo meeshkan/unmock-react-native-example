@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import App from '../src/App';
+import App, {mockCatFactAPI} from '../src/App';
 
 import unmock, {transform, u} from 'unmock';
 
@@ -15,16 +15,9 @@ import {
 // @ts-ignore
 global.fetch = require('node-fetch');
 
-// https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1
-
 describe('App', () => {
   beforeAll(() => {
-    unmock.on();
-    unmock
-      .nock('https://cat-fact.herokuapp.com', 'catFactApi')
-      .get('/facts/random?animal_type=cat&amount=1')
-      .reply(200, {text: u.string('lorem.sentence')})
-      .reply(500, 'Internal server error');
+    mockCatFactAPI(unmock);
   });
   beforeEach(() => {
     unmock.reset();
